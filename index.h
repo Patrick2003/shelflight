@@ -1,26 +1,25 @@
 const char MAIN_page[] PROGMEM = R"=====(
 <!DOCTYPE html>
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Volkhov" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
 <html>
   <head>
     <title>Schrankbeleuchtung</title>
   </head>
   <body link=black>
+    <Center>
       <div>
            <button id="button" type="button">
-            <img id="bulb"  width=100pt> 
+            <img id="bulb"  style="width:150px;height:155px"> 
            </button>
       </div>
       <div> Lichtfarbe </div>
       <div>
-        <input id="hue" type="range" min="-255" max="255" value="0" step="5" onchange="showHue(this.value)" />
-        <span id="huespan">0</span>
+        <input id="hue" type="range" min="-255" max="255" value="0" step="1" onchange="showHue(this.value)" />
       </div>
       <div> Helligkeit </div>
       <div>
-        <input id="brightness" type="range" min="0" max="255" value="125" step="5" onchange="showBrightness(this.value)" />
-        <span id="brightnessspan">0</span>
+        <input id="brightness" type="range" min="0" max="255" value="125" step="1" onchange="showBrightness(this.value)" />
       </div>
       <script type="text/javascript">
           var url = "http://simpleicon.com/wp-content/uploads/light-bulb-6.svg";
@@ -59,7 +58,6 @@ const char MAIN_page[] PROGMEM = R"=====(
           })
           function showBrightness(newValue)
           {
-            $("#brightnessspan").html(newValue);
             sliderBrightness = newValue;
             brightness = newValue;
             //console.log("showBrightness"+newValue);
@@ -68,10 +66,8 @@ const char MAIN_page[] PROGMEM = R"=====(
           
           function showHue(newValue)
           {
-            $("#huespan").html(newValue);
             sliderHue = newValue;
             hue = (215+(sliderHue*(40/125)));           
-            $("#button").css("background-color","rgb(250,245,"+hue+")")
             post();
           }
           function post () {
@@ -81,13 +77,17 @@ const char MAIN_page[] PROGMEM = R"=====(
           console.log ("showURL" + "http://"+ip+"/power" , {value : on, hue : sliderHue, brightness : brightness})
           }
         </script>
-        <style type="style/css">
+        <style >
             body{
-            font-size:24pt;
-            font-family: Volkhov;
-            background-color:rgb(255,255,255)}
-            #button {background-color: rgb(255,245,215)}
+            font-size:27pt;
+            color: black;
+            text-shadow: 2px 1px rgb(180,180,180);
+            font-family: Ubuntu;
+            background-color: rgb(200,230,250)}
+            #button {background-color: rgb(255,255,100);
+                     border:2px solid #000}
         </style>
+     </Center>
   </body>
 </html>
 )=====";
