@@ -1,5 +1,5 @@
 # shelflight
-Arduino Code for esp8266 to control the hue and brightness of a LED strip.
+Arduino Code for esp8266 to control the hue and brightness of a LED strip with a website.
 
 The configuration.h has to look like the following example:
 
